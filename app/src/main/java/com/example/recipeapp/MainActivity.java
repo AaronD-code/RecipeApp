@@ -1,5 +1,6 @@
 package com.example.recipeapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.activity.EdgeToEdge;
@@ -41,18 +42,25 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentManager manager = getSupportFragmentManager();
 
-        // Remember the recipe displayed before rotation.
-        Bundle selectedRecipe = null;
+        // First check for a recipe sent by IngredientsActivity.
+        Bundle selectedRecipe =
+                getIntent().getBundleExtra("selected_recipe");
 
-        for (Fragment fragment : manager.getFragments()) {
-            if (fragment instanceof IngredientsFragment
-                    && fragment.getArguments() != null) {
+        getIntent().removeExtra("selected_recipe");
 
-                selectedRecipe = new Bundle(fragment.getArguments());
+        // Otherwise recover the recipe shown before rotation.
+        if (selectedRecipe == null) {
+            for (Fragment fragment : manager.getFragments()) {
+                if (fragment instanceof IngredientsFragment
+                        && fragment.getArguments() != null) {
+
+                    selectedRecipe =
+                            new Bundle(fragment.getArguments());
+                }
             }
         }
 
-        // Clear the old navigation before rebuilding the layout.
+        // Remove the previous layout's fragments and navigation.
         manager.popBackStackImmediate(
                 null,
                 FragmentManager.POP_BACK_STACK_INCLUSIVE
@@ -66,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         reset.commitNow();
 
-        // Always show the recipe list first.
+        // The main Activity always contains the recipe list.
         manager.beginTransaction()
                 .replace(
                         R.id.fragment_container,
@@ -83,13 +91,11 @@ public class MainActivity extends AppCompatActivity {
                     .commitNow();
 
         } else if (selectedRecipe != null) {
-            IngredientsFragment details = new IngredientsFragment();
-            details.setArguments(selectedRecipe);
+            Intent intent =
+                    new Intent(this, IngredientsActivity.class);
 
-            manager.beginTransaction()
-                    .replace(R.id.fragment_container, details)
-                    .addToBackStack(null)
-                    .commit();
+            intent.putExtra("selected_recipe", selectedRecipe);
+            startActivity(intent);
         }
     }
 }

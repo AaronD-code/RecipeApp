@@ -96,14 +96,18 @@ public class RecipesFragment extends Fragment {
                                         )
                                         .commit();
                             } else {
-                                getParentFragmentManager()
-                                        .beginTransaction()
-                                        .replace(
-                                                R.id.fragment_container,
-                                                detailFragment
-                                        )
-                                        .addToBackStack(null)
-                                        .commit();
+                                android.content.Intent intent =
+                                        new android.content.Intent(
+                                                requireContext(),
+                                                IngredientsActivity.class
+                                        );
+
+                                intent.putExtra(
+                                        "selected_recipe",
+                                        detailFragment.getArguments()
+                                );
+
+                                startActivity(intent);
                             }
 
                         } catch (Exception e) {
