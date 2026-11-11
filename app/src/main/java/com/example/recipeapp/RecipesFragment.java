@@ -56,6 +56,71 @@ public class RecipesFragment extends Fragment {
                         recipes.getJSONObject(i).getString("name"));
             }
 
+            recipeList.setOnItemClickListener(
+                    (parent, itemView, position, id) -> {
+
+                        try {
+                            org.json.JSONObject recipe =
+                                    recipes.getJSONObject(position);
+
+                            JSONArray ingredientArray =
+                                    recipe.getJSONArray("ingredients");
+
+                            ArrayList<String> ingredients =
+                                    new ArrayList<>();
+
+                            for (int i = 0;
+                                 i < ingredientArray.length(); i++) {
+
+                                ingredients.add(
+                                        ingredientArray.getString(i));
+                            }
+
+                            IngredientsFragment detailFragment =
+                                    IngredientsFragment.newInstance(
+                                            recipe.getString("name"),
+                                            ingredients,
+                                            recipe.getString("method")
+                                    );
+
+                            boolean isLandscape =
+                                    requireActivity().findViewById(
+                                            R.id.detail_container) != null;
+
+                            if (isLandscape) {
+                                getParentFragmentManager()
+                                        .beginTransaction()
+                                        .replace(
+                                                R.id.detail_container,
+                                                detailFragment
+                                        )
+                                        .commit();
+                            } else {
+                                getParentFragmentManager()
+                                        .beginTransaction()
+                                        .replace(
+                                                R.id.fragment_container,
+                                                detailFragment
+                                        )
+                                        .addToBackStack(null)
+                                        .commit();
+                            }
+
+                        } catch (Exception e) {
+                            android.util.Log.e(
+                                    "RecipesFragment",
+                                    "Cannot open recipe",
+                                    e
+                            );
+
+                            Toast.makeText(
+                                    requireContext(),
+                                    "Could not open recipe",
+                                    Toast.LENGTH_SHORT
+                            ).show();
+                        }
+                    });
+
         } catch (Exception e) {
             android.util.Log.e("RecipesFragment", "Cannot load recipes", e);
 
