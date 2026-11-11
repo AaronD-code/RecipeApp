@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "name": "Classic Caprese Salad",
+    "ingredients": [
+      "2 large tomatoes, sliced",
+      "8 oz fresh mozzarella, sliced",
+      "Fresh basil leaves",
+      "2 tbsp extra virgin olive oil",
+      "1 tbsp balsamic glaze",
+      "Salt and black pepper to taste"
+    ],
+    "method": "Alternate slices of tomato and mozzarella on a plate. Intersperse with fresh basil leaves. Drizzle with olive oil and balsamic glaze, then season with salt and pepper."
+  },
+  {
+    "id": 2,
+    "name": "Garlic Butter Shrimp",
+    "ingredients": [
+      "1 lb large shrimp, peeled and deveined",
+      "3 tbsp unsalted butter",
+      "4 cloves garlic, minced",
+      "1 tbsp lemon juice",
+      "2 tbsp fresh parsley, chopped",
+      "Salt and red pepper flakes to taste"
+    ],
+    "method": "Melt butter in a skillet over medium-high heat. Add garlic and cook for 1 minute until fragrant. Add shrimp, salt, and pepper flakes; sauté for 3-4 minutes until pink. Stir in lemon juice and parsley before serving."
+  },
+  {
+    "id": 3,
+    "name": "Avocado Toast with Poached Egg",
+    "ingredients": [
+      "2 slices sourdough bread, toasted",
+      "1 ripe avocado",
+      "2 large eggs",
+      "1 tbsp lemon juice",
+      "1 tbsp vinegar",
+      "Salt, black pepper, and chili flakes"
+    ],
+    "method": "Mash avocado with lemon juice, salt, and pepper; spread over toast. Bring a pot of water to a simmer with vinegar, swirl the water, and gently drop in eggs to poach for 3 minutes. Top toast with eggs and sprinkle with chili flakes."
+  },
+  {
+    "id": 4,
+    "name": "Quick Chicken Quesadilla",
+    "ingredients": [
+      "2 flour tortillas",
+      "1 cup cooked chicken, shredded",
+      "1 cup Mexican blend cheese, shredded",
+      "1 tbsp butter",
+      "Salsa and sour cream for serving"
+    ],
+    "method": "Melt half the butter in a skillet over medium heat. Place one tortilla in the pan, layer with cheese and shredded chicken, and top with the second tortilla. Cook for 3 minutes per side until golden brown and cheese is melted. Slice and serve with salsa."
+  },
+  {
+    "id": 5,
+    "name": "Berry Banana Smoothie",
+    "ingredients": [
+      "1 ripe banana",
+      "1 cup frozen mixed berries",
+      "1/2 cup Greek yogurt",
+      "3/4 cup almond milk",
+      "1 tbsp honey"
+    ],
+    "method": "Add banana, berries, Greek yogurt, almond milk, and honey into a high-speed blender. Blend on high for 60 seconds until smooth and creamy. Pour into a glass and serve immediately."
+  }
+]
